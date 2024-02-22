@@ -123,18 +123,40 @@ body {
   padding: 12px;
 }
 
-
 /* <!-- Latest Repos--> */
-.repos{
+.repos-list {
+  margin-top: 20px;
+}
+.repos-div {
   display: flex;
   width: 100%;
   height: 60px;
   align-items: center;
   border-radius: 10px;
   border: 1px solid rgb(233, 233, 233);
+  margin-bottom: 10px;
+}
+.repos-info {
+  display: flex;
+  width: fit-content;
+  margin-right: 100px;
+}
+#repos-name {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  height: 100%;
+  color: rgb(3, 98, 177);
+  margin-left: 20px;
+  text-decoration-line: none;
+}
+#repos-name:hover {
+  color: rgb(80, 138, 185);
 }
 
-
+#repos-title {
+  padding-bottom: 20px;
+}
 
 /* footer */
 .footer {

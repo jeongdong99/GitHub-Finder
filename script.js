@@ -8,6 +8,7 @@ class User {
     this.profile = profile;
   }
 }
+
 class Profile {
   constructor(
     company,
@@ -62,7 +63,7 @@ function makeUserProfile(jsonRes) {
   return profile;
 }
 
-function inputUserInfo(user) {
+async function renderUserInfo(user) {
   document.getElementsByClassName("profile-div")[0].innerHTML = `
   <img id="user_avatar" src=${user.avatar} />
   <button id="viewProfileBtn" onclick="viewProfile()">View Profile</button>
@@ -85,15 +86,12 @@ function inputUserInfo(user) {
 
 async function getUserInfo(userName) {
   try {
-    const res = await fetch(apiUrl + userName);
-    if (res.ok) {
-      const jsonRes = await res.json();
+    const userRes = await fetch(apiUrl + userName);
+    if (userRes.ok) {
+      const userJson = await userRes.json();
 
-      // 지워야함
-      console.log(jsonRes);
-
-      
-      inputUserInfo(makeUser(jsonRes.avatar_url, makeUserProfile(jsonRes)));
+      renderUserInfo(makeUser(userJson.avatar_url, makeUserProfile(userJson)));
+      getRepos(userJson.repos_url);
     } else {
       window.alert("해당 ID를 가진 유저가 없습니다!");
     }
@@ -107,4 +105,38 @@ async function getUserInfo(userName) {
 // 동적 생성된 버튼에 이번트 넣어주기
 function viewProfile() {
   document.getElementsByClassName("user-div hide")[0].classList.remove("hide");
+}
+
+// repos
+async function getRepos(repos_url) {
+  try {
+    const reposRes = await fetch(repos_url + "?sort=updateed");
+    if (reposRes.ok) {
+      const reposJson = await reposRes.json();
+      console.log(reposJson);
+      renderRepos(reposJson);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function renderRepos(repos) {
+  const repoContainer = document.getElementsByClassName("repos-container")[0];
+  repoContainer.innerHTML = `<h2 id="repos-title">Latest Repos</h2>`;
+
+  repos.slice(0, 5).forEach((repo) => {
+    const newRepo = document.createElement("div");
+    newRepo.classList.add("repos-div");
+    newRepo.innerHTML = `
+    <a id="repos-name" href=${repo.url}> ${repo.name} </a>
+
+    <div class="repos-info">
+      <span class="badge text-bg-primary">Stars: ${repo.stargazers_count}</span>
+      <span class="badge text-bg-secondary">Watchers: ${repo.watchers}</span>
+      <span class="badge text-bg-third">Forks: ${repo.forks}</span>
+    </div>
+        `;
+    repoContainer.appendChild(newRepo);
+  });
 }

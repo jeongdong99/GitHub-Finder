@@ -6,9 +6,12 @@ body {
   width: 100%;
   height: 100vh;
 }
-.body-container{
-    margin: 10px 20px;
+.body-container {
+  margin: 10px 20px;
 }
+
+/* header */
+
 .navbar {
   display: flex;
   background-color: rgb(67, 105, 230);
@@ -23,6 +26,8 @@ body {
   font-size: 20px;
   font-weight: bold;
 }
+
+/* search */
 
 .search-div {
   height: fit-content;
@@ -40,7 +45,7 @@ body {
   margin-top: 5px;
 }
 #name-input {
-  width: 500px;
+  width: 90%;
   height: 32px;
   font-size: 15px;
   margin-top: 15px;
@@ -48,23 +53,78 @@ body {
   border: 1px solid rgb(233, 233, 233);
 }
 
+/* profile */
+
 .content-div {
-    margin: 20px 0;
+  margin: 20px 0;
   display: flex;
-  height: fit-content;
-  padding-left: 20px;
+  height: 300px;
+  padding: 20px 20px;
   border-radius: 10px;
   border: 1px solid rgb(233, 233, 233);
 }
-#body-wrapper {
-  min-height: 100%;
-  position: relative;
+.profile-div {
+  width: 300px;
+  height: 100%;
 }
 
-#body-content {
-  margin-top: 100px;
-  padding-bottom: 99999px; /* footer의 높이 */
+#user_avatar {
+  width: 100%;
+  height: 85%;
 }
+#viewProfileBtn {
+  margin-top: 5px;
+  color: white;
+  border-radius: 12px;
+  border-color: rgb(19, 130, 235);
+  width: 100%;
+  height: 10%;
+  background-color: rgb(19, 130, 235);
+}
+#viewProfileBtn:hover {
+  cursor: pointer;
+  background-color: rgb(142, 189, 233);
+}
+
+.user-div {
+  width: 70%;
+  margin-left: 30px;
+}
+
+.github-active-list {
+  display: flex;
+}
+.badge {
+  color: white;
+  padding: 5px 20px;
+  border-radius: 5px;
+  margin-left: 5px;
+  background-color: red;
+}
+.text-bg-primary {
+  background-color: rgb(19, 130, 235);
+}
+.text-bg-secondary {
+  background-color: rgb(149, 151, 153);
+}
+.text-bg-third {
+  background-color: rgb(64, 233, 92);
+}
+.text-bg-fourth {
+  background-color: rgb(47, 190, 183);
+}
+.user-info-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 30px;
+}
+.list-group-item {
+  border: 1px solid #ddd;
+  margin-top: -1px;
+  padding: 12px;
+}
+
+/* footer */
 .footer {
   display: flex;
   position: absolute;
@@ -75,3 +135,9 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* etc */
+
+/* .hide {
+  display: none;
+} */

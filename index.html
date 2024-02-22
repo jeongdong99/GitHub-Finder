@@ -8,6 +8,7 @@
   </head>
 
   <body>
+
     <!-- header -->
     <header>
       <div class="navbar">
@@ -16,12 +17,14 @@
         </div>
       </div>
     </header>
+
+    <main>
     <div class="body-container">
-      <main>
+
         <!-- Search -->
         <div class="search-div">
           <h1 id="search-title">Search GitHub Users</h1>
-          <p id="explain-input">
+          <p id="placeholder">
             Enter a username to fetch a user profile and repos
           </p>
           <input id="name-input" />
@@ -29,19 +32,30 @@
 
         <!-- Profile -->
         <div class="content-div">
-          <div class="profile-div"></div>
+          <div class="profile-div">
+            <!-- picture-->
+          </div>
+
           <div class="user-div hide">
-            <div class="github-active-list"></div>
-            <ul class="user-info-list"></ul>
+            <div class="github-active-list">
+              <!--follower,gists-->
+            </div>
+            <ul class="user-info-list">
+              <!--company,website-->
+            </ul>
           </div>
         </div>
+
         <!-- Latest Repos-->
         <div class="repos-container"></div>
-      </main>
     </div>
+  </main>
+
+  <!-- footer-->
     <div class="footer">
-      <p>GitHub Finder</p>
+      <p>GitHub Finder &#169;</p>
     </div>
   </body>
+
   <script src="script.js"></script>
 </html>

@@ -1,5 +1,4 @@
-const user_avatar = document.getElementById("user_avatar");
-
+// api 주소
 const apiUrl = `https://api.github.com/users/`;
 
 class User {
@@ -31,9 +30,7 @@ class Profile {
   }
 }
 
-document
-  .getElementById("name-input")
-  .addEventListener("keypress", enterKeyPress);
+document.getElementById("name-input").addEventListener("keypress", enterKeyPress);
 
 function enterKeyPress(e) {
   if (e.key === "Enter") {
@@ -63,6 +60,24 @@ function makeUserProfile(jsonRes) {
   return profile;
 }
 
+async function getUserInfo(userName) {
+  try {
+    const userRes = await fetch(apiUrl + userName);
+    if (userRes.ok) {
+      const userJson = await userRes.json();
+
+      renderUserInfo(makeUser(userJson.avatar_url, makeUserProfile(userJson)));
+      getRepos(userJson.repos_url);
+    } else {
+      window.alert("해당 ID를 가진 유저가 없습니다!");
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log("--작업 완료--");
+  }
+}
+
 async function renderUserInfo(user) {
   document.getElementsByClassName("profile-div")[0].innerHTML = `
   <img id="user_avatar" src=${user.avatar} />
@@ -84,23 +99,6 @@ async function renderUserInfo(user) {
   <li class="list-group-item">Member Since: ${user.profile.memberSince}</li>`;
 }
 
-async function getUserInfo(userName) {
-  try {
-    const userRes = await fetch(apiUrl + userName);
-    if (userRes.ok) {
-      const userJson = await userRes.json();
-
-      renderUserInfo(makeUser(userJson.avatar_url, makeUserProfile(userJson)));
-      getRepos(userJson.repos_url);
-    } else {
-      window.alert("해당 ID를 가진 유저가 없습니다!");
-    }
-  } catch (error) {
-    console.log(error);
-  } finally {
-    console.log("--작업 완료--");
-  }
-}
 
 // 동적 생성된 버튼에 이번트 넣어주기
 function viewProfile() {

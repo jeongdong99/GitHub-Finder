@@ -96,10 +96,9 @@ body {
 }
 .badge {
   color: white;
-  padding: 5px 20px;
+  padding: 4px 20px;
   border-radius: 5px;
   margin-left: 5px;
-  background-color: red;
 }
 .text-bg-primary {
   background-color: rgb(19, 130, 235);
@@ -124,6 +123,19 @@ body {
   padding: 12px;
 }
 
+
+/* <!-- Latest Repos--> */
+.repos{
+  display: flex;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgb(233, 233, 233);
+}
+
+
+
 /* footer */
 .footer {
   display: flex;
@@ -137,7 +149,6 @@ body {
 }
 
 /* etc */
-
-/* .hide {
+.hide {
   display: none;
-} */
+}
